@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from helper.xpath import dumskaya as x
 from helper.user import data as user_data
+from helper.waiters import parts
 
 driver = webdriver.Chrome()
 driver.set_window_position(2000, 600)
@@ -13,14 +14,11 @@ url = 'https://dumskaya.net/'
 
 driver.get(url)
 
-enter_button = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, x.Home.enter_button)))
-enter_button.click()
+parts.base_button(driver, x.Home.enter_button)
 
-registration_button = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, x.Home.registration_button)))
-registration_button.click()
+parts.base_button(driver, x.Home.registration_button)
 
-email_field = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, x.Registration.email_field)))
-email_field.send_keys(user_data.email)
+parts.base_field(driver, x.Registration.email_field, user_data.email)
 
 nick_field = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, x.nick_field)))
 nick_field.send_keys(user_data.nick)
@@ -36,4 +34,3 @@ male_radio.click()
 
 finish_button = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, x.finish_button)))
 finish_button.click()
-
