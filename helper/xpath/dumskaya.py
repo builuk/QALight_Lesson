@@ -26,5 +26,6 @@ class Registration:
     male_radio = '//input[@value="m"]'
     female_radio = '//input[@value="f"]'
     finish_button = '//input[@type="submit"]/following::input[@type="submit"]'
+    error_label = '//td[@class="newscol"]/div[@style="color:red;"]'
 class UserInfo:
     user_name_label = '//a[@class="celluname1"]'
