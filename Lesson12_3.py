@@ -45,3 +45,8 @@ def registration(email, nick, password):
     user_name_label = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, x.user_name_label)))
 
     return user_name_label.text
+
+
+if __name__ == '__main__':
+    import user_data
+    registration(user_data.email, user_data.nick, user_data.password)
