@@ -13,7 +13,7 @@ url = 'https://dumskaya.net/'
 driver.get(url)
 home = base.HomePage(driver)
 reg = base.RegistrationPage(driver)
-
+top = base.TopPage(driver)
 # home.open_articles_page()
 
 # Розібратись чого не працює
@@ -21,5 +21,8 @@ reg = base.RegistrationPage(driver)
 home.user_menu()
 home.registration_user()
 reg.registration(user_data.email,user_data.nick,user_data.password)
+home.open_top_page()
+print(top.first_line())
+
 
 time.sleep(3000)

@@ -39,6 +39,11 @@ class BasePage:
             EC.presence_of_element_located((By.XPATH, '//div[@class="menutable"]/div/a[@href="/articles/"]')))
         articles_button.click()
 
+    def open_top_page(self):
+        top_button = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, '//div[@class="menutable"]/div/a[@href="/topweek/"]')))
+        top_button.click()
+
 
 class RegistrationPage(BasePage):
     def __init__(self, driver):
@@ -72,3 +77,12 @@ class HomePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         pass
+
+class TopPage(BasePage):
+    def __init__(self, driver):
+        super().__init__(driver)
+        pass
+
+    def first_line(self):
+        first_news = WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div[@class="content"]/table/tbody/tr/td[@valign="top" and not(@class="newsdatetd2")]/a')))
+        return first_news.text
